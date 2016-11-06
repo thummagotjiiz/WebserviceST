@@ -1,5 +1,5 @@
 var soap = require('soap');
-var url = 'http://127.0.0.1:3000/wsdl?wsdl';
+var url = 'http://together-webservice.herokuapp.com:3000/wsdl?wsdl';
 var args1 = { old_movie_name: "The Dark Knight", new_movie_name: "The Dark Knight2" };
 var args2 = { movie_name: "The Dark Knight" };
 var args3 = { movie_name: "Immortals", director: "Christopher Nolan" };
