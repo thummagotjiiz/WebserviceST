@@ -1,5 +1,5 @@
 <definitions name="HelloService"
-   targetNamespace="http://together-webservice.herokuapp.com:3000/wsdl/wdsl?"
+   targetNamespace="http://together-webservice.herokuapp.com:3000/wsdl?wsdl"
    xmlns="http://schemas.xmlsoap.org/wsdl/"
    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
    xmlns:tns="http://www.examples.com/wsdl/HelloService.wsdl"
