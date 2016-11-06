@@ -104,12 +104,12 @@ var helloService = {
 }
 var xml = require('fs').readFileSync('HelloService.wsdl', 'utf8'),
       server = http.createServer(function (request, response) {
-          response.end("404: Not Found: " + request.url);
           response.setHeader('Access-Control-Allow-Origin', '*');
           response.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
           response.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
           response.setHeader('Access-Control-Allow-Credentials', true);
           response.writeHead(200, { 'Content-Type': 'text/plain' });
+          response.end("404: Not Found: " + request.url);
       });
 
 server.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function () {
