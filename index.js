@@ -102,7 +102,7 @@ var xml = require('fs').readFileSync('HelloService.wsdl', 'utf8'),
           response.end("404: Not Found: " + request.url)
       });
 
-server.listen( 3000,"127.0.0.1", function(){
+server.listen( 3000,"0.0.0.0", function(){
   var addr = server.address();
   console.log("server listening at", addr.address + ":" + addr.port);
   });
