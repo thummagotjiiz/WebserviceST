@@ -62,37 +62,42 @@ var helloService = {
                 var xml = require('fs').readFileSync('movieG5.xml', 'utf8')
                 xml = xml.replace(/(\r\n|\n|\r|\t)/gm, "");
                 var doc = new dom().parseFromString(xml)
-                var nodes = doc[0]//xpath.select("/movielist", doc);
-                //console.log(nodes.toString());
-                var newMovie = nodes.createElement("movie");
-                var moviename = nodes.createElement("name");
-                var a = nodes.createTextNode(args.movie_name)
-                moviename.appendChild(a);
-                var direc = nodes.createElement("director");
-                var b = nodes.createTextNode(args.director)
-                direc.appendChild(b);
-                var year = nodes.createElement("year");
-                var c = nodes.createTextNode(args.year)
-                year.appendChild(c);
-                var gen = nodes.createElement("genres");
-                var g = nodes.createElement("genre");
-                var d = nodes.createTextNode(args.gerne)
-                g.appendChild(d);
-                gen.appendChild(g);
-                var stars = nodes.createElement("stars");
-                var f = nodes.createElement("name");
-                var e = nodes.createTextNode(args.star)
-                f.appendChild(e);
-                stars.appendChild(f);
-                newMovie.appendChild(moviename);
-                newMovie.appendChild(direc);
+                var nodes = xpath.select("/movielist", doc);
+                var newMovie = doc.createElement("movie")
+
+                name = doc.createElement("name");
+                txtName = doc.createTextNode(args.movie_name)
+                name.appendChild(txtName);
+
+                director = doc.createElement("director");
+                txtDir = doc.createTextNode(args.director)
+                director.appendChild(txtDir);
+
+                year = doc.createElement("year");
+                txtYear = doc.createTextNode(args.year)
+                year.appendChild(txtYear);
+
+                genres = doc.createElement("genres");
+                genre = doc.createElement("genre");
+                txtGenre = doc.createTextNode(args.genre[1])
+                genre.appendChild(txtGenre);
+                genres.appendChild(genre);
+
+                stars = doc.createElement("stars");
+                stName = doc.createElement("name");
+                txtStr = doc.createTextNode(args.star)
+                stName.appendChild(txtStr);
+                stars.appendChild(stName);
+
+                newMovie = doc.createElement("movie");
+                newMovie.appendChild(name);
+                newMovie.appendChild(director);
                 newMovie.appendChild(year);
-                newMovie.appendChild(gen);
+                newMovie.appendChild(genres);
                 newMovie.appendChild(stars);
-                console.log(newMovie[0].toString());
-                nodes[0].getElementsByTagName("movielist")[0].getElementsByTagName("movie")[0].appendChild(newMovie);
-                console.log(nodes.getElementsByTagName("movielist")[0].getElementsByTagName("name")[0].toString());
-                return { xml: nodes.toString() };
+                doc.getElementsByTagName("movielist")[0].appendChild(newMovie);
+                var result = nodes.toString();
+                return { xml: result };
             }
         }
     }
